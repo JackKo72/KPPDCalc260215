@@ -140,13 +140,10 @@ def extract_features(tap_intervals, tap_positions=None):
                 if x_var > 0 and y_var > 0:
                     corr_matrix = np.corrcoef(x_coords, y_coords)
                     corr_value = float(corr_matrix[0, 1])
-                    print("DEBUG correlation value:", corr_value, file=sys.stderr)
                     features["corXY"] = 0.0 if np.isnan(corr_value) else corr_value
                 else:
-                    print("DEBUG zero variance detected, setting corXY to 0", file=sys.stderr)
                     features["corXY"] = 0.0
             except Exception as e:
-                print("DEBUG correlation calculation error:", str(e), file=sys.stderr)
                 features["corXY"] = 0.0
     
 

@@ -157,7 +157,7 @@ def extract_features(tap_intervals, tap_positions=None):
                 print("DEBUG correlation calculation error:", str(e), file=sys.stderr)
                 features["corXY"] = 0.0
 
-        # features["corXY"] = float(np.corrcoef(x_coords, y_coords)[0, 1]) if len(x_coords) > 1 else 0.0
+        features["corXY"] = float(np.corrcoef(x_coords, y_coords)[0, 1]) if len(x_coords) > 1 else 0.0
     
 
     
@@ -254,4 +254,5 @@ if __name__ == "__main__":
     sys.stdout.flush()
     
     # Output JSON result to stdout
-    print(json.dumps(result))
+    sys.stdout.write(json.dumps(result))
+    sys.stdout.flush()

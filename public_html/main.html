@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="theme-color" content="#F9F9F9" />
+
+<title>PD Calculator</title>
+<link rel="stylesheet" href="/style/font.css">
+<link rel="stylesheet" href="/style/animation.css">
+<link rel="stylesheet" href="/style/main.css">
+</head>
+<body>
+    <!-- 1 page -->
+    <div id="introPage" class="page container flex_col center">
+        <div class="page_wrap flex_col center">
+            <p class="h1 GamtanRoadTantan bold animatedBefore fade animated">혹시 나도 파킨슨병일까?</p>
+            <img id="main_img" class="fade animated" src="/assets/images/pd_pic.png" alt="PPD pictogram" width="140" height="130">
+
+            <button class="button bg_point flex_col animatedBefore fadeInUp animated delay_1" onclick="showExplain()">
+                <span class="h2 bold">알아보기</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 2 explainPage -->
+    <div id="explainPage" style="display: none;" class="">
+        <div class="page">
+            <p class="h1 bold">Q. 무슨 검사인가요?</p>
+            <div class="explainbox default_box flex_col center" id="explainbox">
+                <p class="h4 primary tight">이 검사는 귀하가 10년 내에 파킨슨병에 걸릴 가능성이 높은지 추정하는 검사입니다. </p>
+                <p class="h4 primary tight">이 검사는 2019년 국제 파킨슨 및 이상운동질환 학회에서 만든 Prodromal Parkinson’s Disease Calculator를 기반으로 제작되었습니다. </p>
+                <p class="h4 primary tight">검사 점수가 높다고 파킨슨병으로 진단되는 것은 아니지만 주변 신경과에서 정밀검사를 권장합니다. </p>
+                <br/>
+                <p class="h3 bold red-text">검사는 대략 5분 가량 진행되며, 핸드폰을 내려놓을 수 있는 책상이 있는 곳에서 진행해주세요. </p>
+
+            </div>
+            <button class="button bg_point center animatedBefore fadeInUp animated delay_1" onclick="showAgreement()">
+                <span class="h2 bold">다음</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 3 agreementPage -->
+    <div id="agreementPage" style="display: none;" class="">
+        <div class="page">
+            <p class="h1 bold">연구대상자 설명문 및 동의서</p>
+            <p class="h6 mid primary" style="margin-bottom: 16px;">임상연구심사위원회(HUSHHIRB)/기관생명윤리위원회 승인 (Version 1.1)</p>
+
+            <!-- 글자 크기 조절 -->
+            <div class="font-size-controls">
+                <span>글자 크기</span>
+                <button class="font-size-btn" onclick="setFontSize('small')">가</button>
+                <button class="font-size-btn active" onclick="setFontSize('medium')">가</button>
+                <button class="font-size-btn" onclick="setFontSize('large')">가</button>
+            </div>
+
+            <!-- 아코디언 컨테이너 -->
+            <div class="accordion-container font-medium">
+
+                <!-- 섹션 1: 연구대상자 설명문 -->
+                <div class="accordion-section" id="section1">
+                    <div class="accordion-header" onclick="toggleAccordion('section1')">
+                        <span class="accordion-title h5 bold">1. 연구대상자 설명문</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-scroll" id="scroll1" onscroll="checkScroll('scroll1', 'confirm1', 'scrollHint1')">
+                            <div class="research-info h6">
+                                <p class="bold primary" style="margin-bottom: 16px; font-size: 15px;">1. 임상 연구 제목</p>
+                                <p class="tight">한국형 파킨슨병 전구기 설문지를 통한 파킨슨병 위험군 스크리닝</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">2. 시험 책임자</p>
+                                <p class="tight"><strong>본원 연구책임자</strong></p>
+                                <p class="tight">김영은 교수 (소속 : 한림대학교성심병원 신경과)</p>
+                                <p class="tight" style="margin-top: 8px;"><strong>공동연구자</strong></p>
+                                <p class="tight">한림대학교성심병원 신경과 마효일 교수</p>
+                                <p class="tight">한림대학교성심병원 가정의학과 부교수 노혜미</p>
+                                <p class="tight">한림대학교성심병원 신경과 곽인희 임상강사</p>
+                                <p class="tight" style="margin-top: 8px;"><strong>연구담당자</strong></p>
+                                <p class="tight">한림대학교 성심병원 신경과 이지연 연구간호사</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">3. 개요</p>
+                                <p class="tight">이 연구는 전구기 파킨슨병 설문을 통해 연구에 참여한 분들의 파킨슨병 위험요인 분포를 확인하고 위험도를 평가하기 위한 연구입니다. 귀하는 건강검진 센터를 방문한 대상으로서 이 연구에 참여하도록 권유 받았습니다. 이 연구를 수행하는 한림대학교성심병원 소속 김영은 교수, 연구원이 귀하에게 이 연구 참여 과정에 대하여 설명해 줄 것입니다. 이 연구는 자발적으로 참여 의사를 밝히신 분에 한하여 수행될 것이며, 귀하께서는 본 임상 연구에 참여 의사를 결정하기에 앞서, 본 임상연구가 왜 수행되고, 귀하의 정보가 어떻게 사용될지, 본 임상연구가 어떤 것을 포함하고 있는 지와 가능한 이점, 위험, 불편함은 무엇인지에 대하여 이해하는 것이 중요합니다. 다음의 설명을 신중하게 시간을 가지고 주의 깊게 읽으시기 바라며, 필요하시면 귀하의 주치의 또는 가족이나 친구들과 와 상의하시기 바랍니다. 만일 어떠한 질문 사항이 있으시면 담당 연구원이 자세하게 설명해 줄 것입니다.</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">4. 임상시험의 배경과 목적</p>
+                                <p class="tight">본 연구의 목적은 전구기 파킨슨병 설문을 통해 연구에 참여한 분들의 파킨슨병 위험요인 분포를 확인하고 <strong>파킨슨병 위험도를 평가</strong>하기 위한 연구입니다. 이를 통해 파킨슨병 고위험군을 스크리닝하여 조기 진단에 도움을 주고, 전구기 파킨슨병 환자에 대한 기초 자료를 수집하고자 합니다.</p>
+                                <p class="tight" style="margin-top: 8px;">파킨슨병은 긴 유병기간을 가지면서 점차 악화되는 신경계 퇴행성 질환입니다. <strong>파킨슨병</strong> 진단기준에 부합하는 운동증상이 나타나기 전에 비운동증상만 있는 전구기 단계를 거칩니다. 전구기에 나타나는 비운동증상으로는 변비, 렘수면 행동 장애, 후각 저하, 우울증, 과도한 주간 졸음이 특징적입니다. 비운동증상이 발생한 후 파킨슨병 운동 증상이 나타나기까지 약 5-20년의 지연 기간이 있습니다.</p>
+                                <p class="tight" style="margin-top: 8px;">세계적으로 활발하게 연구를 진행하고 있으나 파킨슨병의 질병 수정 치료제(disease modifying treatment)는 아직 존재하지 않습니다. 전구기 파킨슨병 진단 및 파킨슨병 고위험군 스크리닝은 질병 수정 치료제의 개발과 질병 수정 치료제 임상시험에서 치료 효과를 평가하는 측면에서 매우 중요합니다. 운동 증상 발현 전 병리학적 변화가 선행하기 때문에, 운동 증상이 나타난 후 질병 수정 치료는 제한적인 효과만 나타날 수 있습니다. 치료 개입 시점을 앞당겨 전구기 단계에서 질병 수정 치료를 적용하여 신경 세포 손상을 줄일 수 있다면, 질병 진행을 늦출 가능성이 높아집니다.</p>
+                                <p class="tight" style="margin-top: 8px;">아래의 설명을 읽어 보신 후 연구 참여를 원하시면 자발적으로 서명 동의를 하신 분에 한하여 참여하게 됩니다.</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">5. 연구 약물</p>
+                                <p class="tight">해당사항 없음</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">6. 연구방법</p>
+                                <p class="tight"><strong>1) 연구절차</strong></p>
+                                <p class="tight" style="margin-top: 4px;">건강검진센터에서 태블릿으로 문진표를 작성할 때 본 연구에 대한 설명을 제공하여, 연구 진행에 동의를 받습니다. 귀하가 본 연구에 참여하시게 되면, 먼저 성별, 나이, 과거 병력 등의 기본적인 임상 정보를 확인하고, 전구기 파킨슨병를 확인하기 위한 22개의 질문에 대해 차례대로 응답하게 됩니다. 태블릿 스크린을 보시고, 해당되는 문항을 선택하여 주십시오.</p>
+                                <p class="tight" style="margin-top: 8px;"><strong>2) 연구대상자</strong></p>
+                                <p class="tight" style="margin-top: 4px;">총 연구 참여대상자는 건강검진센터를 방문한 30세 이상의 연령을 대상으로 합니다. 총 2100명을 예상하며, 약 3년간 (~2027년 12월 경까지) 모집 예정입니다.</p>
+                                <p class="bold primary" style="margin-top: 12px;">6 표준치료 방법(임상시험 이외의 다른 치료방법)</p>
+                                <p class="tight">해당 없음</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">7. 연구대상자에게 예견되는 이득</p>
+                                <p class="tight">이 연구로 여러분이 직접적인 이익을 보지 못할 수도 있습니다. 하지만 여러분께서 참여하여 주신 연구 자료의 정보를 이용하여 더 빠른 파킨슨병 진단과 더 나은 파킨슨병 치료제 개발에 이용될 수 있습니다.</p>
+                                <p class="tight" style="margin-top: 8px;">이 연구에 참여하더라도 금전적인 보상은 없습니다.</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">8. 연구의 중도 탈락</p>
+                                <p class="tight">설문을 진행할 때 귀하의 상태를 정확하게 기입하는 것 외 준수하셔야 할 사항은 없습니다.</p>
+                                <p class="tight" style="margin-top: 8px;">본 연구는 어디까지나 본인의 자발적인 의사에 의하여 참여를 결정하는 것입니다. 그리고 연구를 위한 자료를 제공하신 이후에도 언제라도 참여 취소를 하실 수 있으며 이로 인한 불이익은 전혀 없습니다.</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">9. 연구 관련 새로운 정보의 지속적 제공</p>
+                                <p class="tight">본 연구 진행 시 기여자와 관련된 새로운 정보가 있다면 얻게 되는 즉시 귀하 또는 귀하의 대리인에게 알려 드릴 것입니다.</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">10. 연구대상자에게 예견되는 부작용, 위험과 불편함 및 피해발생 시 연구대상자 보상 대책</p>
+                                <p class="tight">본 연구는 설문지 작성에 수반되는 불편 외 추가적인 위험, 부작용, 불편은 없습니다.</p>
+                                <p class="tight" style="margin-top: 8px;">연구에 참여함으로써 대상자에게 예상되는 비용은 없으며, 손실에 대한 보상은 해당 사항이 없습니다. 본 연구에 참여하셔서 피해가 있었다고 생각되시면 담당의사나 연구간호사에게 연락을 주십시오.</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">11. 비밀 보장</p>
+                                <p class="tight">귀하가 본 연구에 참여하시게 되면, 설문지 작성 중복 여부를 확인하기 위해 시행자의 전화번호와 시행일자를 수집합니다. 또한 성별, 나이, 과거 병력, 현 병력 등의 기본적인 임상 정보와 의료기록, 검사결과, 건강정보 등이 수집되게 됩니다. 임상연구 담당의사, 연구담당 직원이 이러한 정보를 사용하며, 임상연구 진행 중 및 임상연구 종료 후에도, 점검을 실시하는 사람, IRB 및 식품의약품안전처장, 보건복지부장관 등이 관계 법령에 따라 연구의 절차와 자료의 품질을 검증하기 위하여 대상자의 신상에 관한 비밀이 보호되는 범위에서 대상자의 연구기록을 열람할 수 있으며, 대상자 또는 대상자의 대리인이 서명한 동의서에 의하여 이러한 자료의 열람이 허용됩니다.</p>
+                                <p class="tight" style="margin-top: 8px;">하지만 <u>여러분의 신원을 파악할 수 있는 기록은 개인을 식별할 수 없도록 암호화하여 관리되며 비밀로 보호됩니다.</u> 데이터는 여러분의 성명을 가린 채로 제공되기 때문에 자료상으로 여러분이 어디에 사는 누구인지, 어떤 사람인지 알 수 없습니다. 또한 연구 결과가 출판될 경우에도 여러분의 신상 정보는 비밀상태로 유지될 것입니다.</p>
+                                <p class="tight" style="margin-top: 8px;">여러분은 언제라도 연구자에게 통보하여 동의를 취소할 수 있습니다. 여러분이 동의하신 것을 철회하면 연구 담당자는 여러분의 의학 정보를 더 이상 사용할 수 없습니다.</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">12. 자발적 참여</p>
+                                <p class="tight">본 연구에 참여하시는 것은 귀하에게 달려 있습니다. 귀하는 언제든지 연구에 참여하지 않기로 결정할 수 있고 또한 연구를 그만 둘 수 있습니다. 귀하가 본 연구에 참여하지 않아도 아무런 불이익을 받지 않으며 귀하의 결정은 향후 귀하가 진료를 받는 것에 영향을 미치지 않습니다.</p>
+
+                                <p class="bold primary" style="margin-top: 20px;">13. 임상시험 관련 책임자 및 연락처</p>
+                                <p class="tight">연구에 관한 질문에 담당의사 또는 연구간호사가 답변을 할 것입니다. 연구와 관련하여 언제라도 질문을 하실 수 있으며 모든 의문점에 대하여 연락을 주시기 바랍니다. 부작용을 경험하신 경우 즉시 연락 주십시오.</p>
+                                <p class="tight" style="margin-top: 8px;">- 연구책임자 : 신경과 김영은 교수 (031-380-3740)</p>
+                                <p class="tight" style="margin-left: 12px;">소속: 한림대학교성심병원 신경과, 주소: [14068] 경기도 안양시 동안구 관평로 170 번길 22(평촌동 896)</p>
+                                <p class="tight" style="margin-top: 12px;">연구대상자의 권익에 대한 문제, 우려, 질문이 있을 때 상의할 경우, 아래 표시된 담당자에게 연락하여 주십시오.</p>
+                                <p class="tight" style="margin-top: 8px;">- 한림대학교성심병원 임상시험심사위원회 : 031-380-1975</p>
+                                <p class="tight">- 한림대학교성심병원 임상연구보호실 : 031-380-4775</p>
+                            </div>
+                        </div>
+                        <div class="accordion-confirm">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="confirm1" onchange="checkAllConfirmed()" disabled>
+                                <span class="h6">위 연구대상자 설명문을 모두 읽고 확인했습니다</span>
+                            </label>
+                            <p class="scroll-hint h7" id="scrollHint1">* 끝까지 스크롤하여 내용을 확인해 주세요</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 섹션 2: 개인정보 제공 동의 -->
+                <div class="accordion-section" id="section2">
+                    <div class="accordion-header" onclick="toggleAccordion('section2')">
+                        <span class="accordion-title h5 bold">2. 개인정보 제공 동의</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-scroll" id="scroll2">
+                            <div class="research-info h6">
+                                <p class="bold primary" style="margin-bottom: 12px;">개인 정보의 제공에 대한 동의사항</p>
+                                <p class="tight">귀하의 자료는 향후의 다른 연구에서도 사용하여 더 좋은 결과를 얻을 수 있습니다.</p>
+                                <p class="tight" style="margin-top: 12px;">귀하의 자료를 향후의 다른 연구에 사용하는 것과 관련하여 다음 중 하나를 선택해 주시기 바랍니다.</p>
+                            </div>
+                        </div>
+                        <div class="privacy-options">
+                            <label class="radio-label">
+                                <input type="radio" name="privacyConsent" value="all" onchange="checkAllConfirmed()">
+                                <span class="h6">향후의 모든 다른 연구에 귀하의 자료를 제공하여 연구하는 것에 동의한다</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="privacyConsent" value="hospital" onchange="checkAllConfirmed()">
+                                <span class="h6">한림대학교성심병원의 연구자에게만 동의한다</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="privacyConsent" value="current" onchange="checkAllConfirmed()">
+                                <span class="h6">본 연구의 연구자에게만 동의한다</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="privacyConsent" value="none" onchange="checkAllConfirmed()">
+                                <span class="h6">동의하지 않는다</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 섹션 3: 연구대상자 동의서 -->
+                <div class="accordion-section" id="section3">
+                    <div class="accordion-header" onclick="toggleAccordion('section3')">
+                        <span class="accordion-title h5 bold">3. 연구대상자 동의서</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-scroll" id="scroll3">
+                            <div class="research-info h6">
+                                <p class="bold primary" style="margin-bottom: 12px;">연구대상자 동의서</p>
+                                <p class="tight">아래 각 항목을 확인하고 동의하시면 체크해 주세요.</p>
+                            </div>
+                        </div>
+                        <div class="consent-checkboxes">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent1" onchange="checkAllConfirmed()">
+                                <span class="h6">본인은 임상연구에 대해 구두로 설명을 받고 상기 연구대상자 설명문을 읽었으며 담당 연구원과 이에 대하여 의논하였습니다.</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent2" onchange="checkAllConfirmed()">
+                                <span class="h6">본인은 위험과 이득에 관하여 들었으며 나의 질문에 만족할 만한 답변을 얻었습니다.</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent3" onchange="checkAllConfirmed()">
+                                <span class="h6">본인은 이 연구에 참여하는 것에 대하여 자발적으로 동의합니다.</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent4" onchange="checkAllConfirmed()">
+                                <span class="h6">본인은 이후의 치료에 영향을 받지 않고 언제든지 연구의 참여를 거부하거나 연구의 참여를 중도에 철회할 수 있고 이러한 결정이 나에게 어떠한 해가 되지 않을 것이라는 것을 알고 있습니다.</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent5" onchange="checkAllConfirmed()">
+                                <span class="h6">본인은 이 설명서 및 동의서에 서명함으로써 의학 연구 목적으로 나의 개인정보가 현행 법률과 규정이 허용하는 범위 내에서 연구자가 수집하고 처리하는데 동의합니다.</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent6" onchange="checkAllConfirmed()">
+                                <span class="h6">본인은 이 동의서 사본을 받을 것을 알고 있습니다.</span>
+                            </label>
+                        </div>
+                        <div class="research-info h7" style="padding: 12px 20px; background: #F9F9F9; border-top: 1px solid #d3d3d3;">
+                            <p class="tight opacity_60">* 본 연구를 위해 수집된 개인정보는 관련법령에 따라 연구종료 시점부터 3년간 의무적으로 보관되며, 코호트 연구의 특성상 7년까지 보관 후 폐기됩니다.</p>
+                            <p class="tight opacity_60">- 생명윤리 및 안전에 관한 법률 시행규칙 제15조 (인간대상연구의 기록 및 보관 등)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 섹션 4: 최종 동의 확인 -->
+                <div class="accordion-section" id="section4">
+                    <div class="accordion-header" onclick="toggleAccordion('section4')">
+                        <span class="accordion-title h5 bold">4. 최종 동의 확인</span>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="final-consent">
+                            <div class="consent-summary h6">
+                                <p class="bold primary" style="margin-bottom: 12px;">동의 현황</p>
+                                <div class="summary-item">
+                                    <span>연구 설명문 확인:</span>
+                                    <span id="summary1" class="status-pending">미완료</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span>개인정보 제공 동의:</span>
+                                    <span id="summary2" class="status-pending">미선택</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span>연구대상자 동의:</span>
+                                    <span id="summary3" class="status-pending">미완료</span>
+                                </div>
+                            </div>
+                            <div class="final-notice h6">
+                                <p class="tight red" id="incompleteNotice">* 모든 필수 항목을 완료해 주세요</p>
+                                <p class="tight dark_green" id="completeNotice" style="display: none;">모든 항목이 완료되었습니다. 동의 버튼을 클릭하여 진행해 주세요.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex_row button_row" style="margin-top: 24px;">
+                <button class="button bg_white border_primary flex_col" onclick="notParticipate()">
+                    <span class="h5 mid primary">동의하지 않습니다</span>
+                </button>
+                <button class="button bg_point border_point flex_col" id="agreeBtn" onclick="showIdentification()" disabled style="opacity: 0.5;">
+                    <span class="h5 bold">동의합니다</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4 identificationPage -->
+    <div id="identificationPage" style="display: none;" class="">
+        <div class="page">
+            <p class="h1 bold">개인정보 입력</p>
+            <div class="introbox default_box flex_col left h4" id="identificationBox">
+                <div class="flex_col input_row">
+                    <label for="name" class="primary mid">이름<span class="red">*</span></label>
+                    <input class="input h6" type="text" id="name" required placeholder="홍길동">
+                </div>
+                <div class="flex_col input_row">
+                    <label for="select_year" class="primary mid">나이<span class="red">*</span></label>
+                    <div class="date_input_wrap flex_row">
+                        <div class="grow flex_row date_gap">
+                            <select id="select_year" class="input" onchange="javascript:lastday();"></select> 
+                            <span class="age_unit h5">년</span> 
+                        </div>
+                        <div class="grow flex_row date_gap">
+                            <div class="date_gap grow flex_row">
+                                <select id="select_month" class="input" onchange="javascript:lastday();"></select>
+                                <span class="age_unit h5">월</span>
+                            </div>
+                            <div class="date_gap grow flex_row">
+                                <select id="select_day" class="input"></select>
+                                <span class="age_unit h5">일</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="flex_col input_row">
+                    <label for="sex" class="primary mid">성별<span class="red">*</span></label>
+                    <select id="sex" class="input" required>
+                        <option value="M">남성</option>
+                        <option value="F">여성</option>
+                        <option value="O">그 외</option>
+                    </select>
+                </div>
+
+                <div class="flex_col input_row">
+                    <label for="hpnum" class="mid">핸드폰 번호 <span class="red">*</span><span class="h6 tight">(숫자만 입력)</span></label>
+                    <input placeholder="010-0000-0000" type="tel" id="hpnum" class="underlying input" name="hpnum" maxlength='13' oninput="formatPhone(this)" required="required">
+                </div>
+
+                <div class="flex_col input_row">
+                    <label for="udelse" class="left mid"> 이전에 진단받은 병이 있거나 평소에 먹는 약이 있나요?<span class="red">*</span><br><span class="h6 tight">(없다면 그 외에 없음 이라 적어주세요)</span></label>
+                    <div class="flex_col ck_list">
+                        <div class="date_gap grow flex_row">
+                            <input type="checkbox" id="hypertension" class="input" name="underlyingConditions" value="htn">
+                            <label for="hypertension">고혈압</label>
+                        </div>
+                        <div class="date_gap grow flex_row">
+                            <input type="checkbox" id="diabetes" class="input" name="underlyingConditions" value="dm">
+                            <label for="diabetes">당뇨</label>
+                        </div>
+                        <div class="date_gap grow flex_row">
+                            <input type="checkbox" id="hyperlipidemia" class="input" name="underlyingConditions" value="hl">
+                            <label for="hyperlipidemia">고지혈증</label>
+                        </div>
+                        <div class="date_gap grow flex_row etc">
+                            <label for="udelse" class="udelse">그 외</label>
+                            <input type="text" id="udelse" class="underlying input" name="udelse" required placeholder="없다면 없음 이라 적어주세요">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex_row button_row">
+                <button class="button bg_point border_point flex_col" onclick="startQuestionnaire(event)">
+                    <span class="h2 bold">검사 시작</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5 calculatorPage -->
+    <div id="calculatorPage" style="display: none;" class="">
+        <div class="page">
+            <div class="default_box">
+                <div id="survey-container">
+                    <div id="question" class="question-text h1 bold primary"></div>
+                    <div id="subtext" class="subtext"></div> 
+                    <div id="choices"></div>
+                </div>
+                <div id="pagination" class="flex_row">
+                    <button id="prev-button" class="bg_white border_primary primary" onclick="prevPage()">< 이전</button>
+                    <button id="next-button" class="bg_white border_primary primary" onclick="nextPage()">> 다음</button>
+                </div>
+            </div>
+        
+            </div>
+        </div>
+    </div>
+    <!-- 6 FFT Test Page -->
+
+    <!-- 화면 전환 안내 모달 -->
+    <div id="rotatePrompt" style="display: none;" class="page container flex_col center">
+        <div class="page_wrap flex_col center rotate-prompt-content">
+            <div class="rotate-icon-container">
+                <div class="rotate-icon">
+                    <svg viewBox="0 0 100 100" width="120" height="120">
+                        <rect x="25" y="10" width="50" height="80" rx="5" ry="5" fill="none" stroke="#FFA500" stroke-width="4"/>
+                        <circle cx="50" cy="82" r="4" fill="#FFA500"/>
+                        <rect x="35" y="18" width="30" height="50" fill="#FFA50030"/>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="h1 bold" style="margin-top: 24px;">핸드폰을 가로로 돌려주세요</h1>
+            <p class="h4 primary" style="margin-top: 12px; text-align: center;">손가락 검사를 위해<br/>화면을 가로 방향으로 전환해주세요</p>
+            <button class="button bg_point border_point flex_col" style="margin-top: 32px;" onclick="checkOrientationAndProceed()">
+                <span class="h2 bold">준비 완료</span>
+            </button>
+        </div>
+    </div>
+
+            <div id="introftt" style="display: none;" class="page container">
+                <div class="page_wrap flex_col center">
+                    <h1 class="h1 bold">손가락 두드리기 검사</h1>
+                    <p class="h4 primary">먼저 주 손을 골라주세요. <br/> <span class="red">고르신 손으로 계속 검사를 진행해주세요</span></p>
+                    <p class="h5 primary" style="margin-top: 8px;">
+                        <span class="bold">검지와 중지를 번갈아 사용하여</span> 두 박스를 터치합니다.<br/>
+                        <span class="red bold">* 한 번에 한 손가락만 터치하세요!</span>
+                    </p>
+                    <p class="h6 red" style="margin-top: 4px;">안내사항을 꼭 숙지 후 진행해주세요</p>
+                    <br/>
+                    <div class="button-container flex_col">
+                        <div class="flex_col button_row">
+                            <div class="flex_row" style="gap: 12px;">
+                                <button class="button bg_white border_primary" id="right-hand" onclick="selectHand('right')">
+                                    <span class="h5 mid primary">오른손잡이</span>
+                                </button>
+                                <button class="button bg_white border_primary" id="left-hand" onclick="selectHand('left')">
+                                    <span class="h5 mid primary">왼손잡이</span>
+                                </button>
+                            </div>
+
+                            <button class="button bg_point border_point flex_col" style="margin-top: 12px;" onclick="step1()">
+                                <span class="h2 bold">검사 준비</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <div id="step1" style="display: none;" class="page container landscape">
+        <div class="page_wrap flex_col center">
+            <h1 class="h1 bold">안내사항</h1>
+            <div class="default_box">
+                <ol class="h4 primary left">
+                    <p>그림처럼 핸드폰을 돌리고 바닥을 책상에 내려놔두세요.</p> 
+                    <img id="ftt_image" class="fade animated responsive-img" src="/assets/images/step1.png" alt="ftt image step1">
+                </ol>
+            </div>
+            <button class="button bg_point border_point flex_col" onclick="step2()">
+                <span class="h2 bold">다음</span>
+            </button>
+        </div>
+    </div>
+
+    
+    <div id="step2" style="display: none;" class="page container landscape">
+        <div class="page_wrap flex_col center">
+            <h1 class="h1 bold">안내사항</h1>
+            <div class="default_box">
+                <ol class="h4 primary left">
+                    <p>검사를 진행할 손의 손바닥을 바닥에 대주세요</p> 
+                    <img id="ftt_image" class="fade animated responsive-img" src="/assets/images/step2.png" alt="ftt image step2">
+            </div>
+            <button class="button bg_point border_point flex_col" onclick="step3()">
+                <span class="h2 bold">다음</span>
+            </button>
+        </div>
+    </div>
+    
+    <div id="step3" style="display: none;" class="page container landscape">
+        <div class="page_wrap flex_col center">
+            <h1 class="h1 bold">안내사항</h1>
+            <div class="default_box">
+                <ol class="h4 primary left">
+                    <p><span class="bold">검지로 위 박스, 중지로 아래 박스</span>를 번갈아 터치하세요.</p>
+                    <p style="margin-top: 8px;"><span class="red bold">* 한 번에 한 손가락만 터치하세요!</span></p>
+                    <img id="ftt_image" class="fade animated responsive-img" src="/assets/images/step3.png" alt="ftt image step3" >
+            </div>
+            <button class="button bg_point border_point flex_col" onclick="step4_1()">
+                <span class="h2 bold">다음</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="step4_1" style="display: none;" class="page container landscape">
+        <div class="page_wrap flex_col center">
+            <h1 class="h1 bold">안내사항</h1>
+            <div class="default_box">
+                <ol class="h4 primary left">
+                    <p>두 상자를 20초간 최대한 빠르게 <span class="bold">번갈아</span> 눌러주세요.</p>
+                    <p style="margin-top: 8px;"><span class="red bold">* 한 번에 한 손가락씩만 터치하세요!</span></p>
+                    <video id="ftt_vid" autoplay muted loop playsinline class="fade animated responsive-img" src="/assets/videos/step4-vid.mp4" alt="ftt video" type="video/mp4">
+                    </video>
+                </ol>
+            </div>
+            <button class="button bg_point border_point flex_col" onclick="step4_2()">
+                <span class="h2 bold">다음</span>
+            </button>
+        </div>
+    </div>
+    
+    <div id="step4_2" style="display: none;" class="page container landscape">
+        <div class="page_wrap flex_col center">
+            <h1 class="h1 bold">안내사항</h1>
+            <div class="default_box">
+                <ol class="h4 primary left">
+                    <p>모의검사 후 30초 휴식 후 실제 검사 진행합니다.</p>
+                    <p style="margin-top: 8px;">검지와 중지를 <span class="bold">번갈아</span> 사용하여 두 박스를 터치하세요.</p>
+                    <p style="margin-top: 4px;"><span class="red bold">* 한 번에 한 손가락씩만 터치하세요!</span></p>
+                    <video id="ftt_vid" autoplay muted loop playsinline class="fade animated responsive-img" src="/assets/videos/step4-vid.mp4" alt="ftt video" type="video/mp4">
+                    </video>
+                </ol>
+            </div>
+            <button class="button bg_point border_point flex_col" onclick="startPracticeTest()">
+                <span class="h2 bold">모의 검사 시작</span>
+            </button>
+        </div>
+    </div>
+
+
+        <!-- **Practice Test Page** -->
+        <div id="practiceftt" style="display: none;" class="page container ">
+            <p class="timer timer-landscape" id="practice-timer">20</p>
+            <div class="rectangle-container" ontouchstart="practiceTap(event); event.preventDefault();" ontouchend="tapEnd()" onmousedown="practiceTap(event)" onmouseup="tapEnd()">
+                <div class="rectangle" id="rect1"></div>
+                <div class="rectangle" id="rect2"></div>
+            </div>
+        </div>
+
+        <!-- **Rest Page with Countdown** -->
+        <div id="restftt" style="display: none;" class="page container landscape">
+            <div class="page_wrap landscape-content">
+                <h1 class="h1 bold">잠시 휴식하세요</h1>
+                <br/>
+                <p class="h4 primary">30초 후 실제 검사 시작 <br/>
+                <span class="red">모의검사를 진행한 손으로 실제 검사를 진행해주세요.</span></p>
+                <p class="h4 primary">색이 늦게 바뀌어도 터치가 인식되는 중입니다.</p>
+                <p class="timer rest-timer-centered" id="rest-timer">30</p>
+            <button id="start-test-btn" style="display: none;" class="button bg_point border_point" onclick="startTest()">검사 시작</button>
+            </div>
+        </div>
+
+    
+
+    <div id="testftt" style="display: none;" class="page container">
+        <p class="timer timer-landscape" id="timer">20</p>
+        <div class="rectangle-container" ontouchstart="recordTap(event); event.preventDefault();" ontouchend="tapEnd()" onmousedown="recordTap(event)" onmouseup="tapEnd()">
+            <div class="rectangle" id="rect1"></div>
+            <div class="rectangle" id="rect2"></div>
+                    </div>
+    </div>
+
+    <!-- **End Page with Results**-->
+    <div id="endftt" style="display: none;" class="page container landscape">
+        <div class="page_wrap flex_col center">
+        <div class="h1 bold">검사가 끝났습니다.</div>
+
+        <button class="button bg_point border_point" id="calculateButton" style="display: none;" onclick="calculate();calculateAndSubmit();">결과 보기</button>
+        </div>
+    </div>
+</div>
+
+
+    <!-- 7 resultsPage -->
+    <div id="resultsPage" style="display: none;" class="">
+        <div class="page results-page">
+            <p class="h3 bold">전체 결과</p>
+
+            <!-- 1순위: 검사 결과 (가장 중요) -->
+            <div class="result-primary">
+                <p class="result-label">검사 결과</p>
+                <p id="resultMessage" class="result-main-message"></p>
+                <p class="result-threshold">80% 이상부터 정밀 검사가 필요합니다.</p>
+            </div>
+
+            <div class="default_box">
+                <!-- 2순위: 위험점수 -->
+                <div class="result-score-block">
+                    <p class="h4 center primary">위험점수</p>
+                    <p class="h8 center opacity_40">RISK PERCENTAGE</p>
+                    <p id="posteriorProbability" class="bold h1 center"></p>
+                    <p class="result-score-desc">나이에 따른 파킨슨병 발병 기본 확률에 응답하신 내용으로 조사한 요인을 반영한 베이즈 정리 사후확률값입니다.</p>
+                </div>
+
+                <hr />
+
+                <!-- 3순위: 가능성점수 -->
+                <div class="result-score-block">
+                    <p class="h4 center primary">가능성점수</p>
+                    <p class="h8 center opacity_40">LIKELIHOOD RATIO</p>
+                    <p id="totalLR" class="bold h1 center"></p>
+                    <p class="result-score-desc">파킨슨병과 관련된 요인들의 질병 유무 확률비(우도비)를 곱한 값입니다.</p>
+                </div>
+            </div>
+
+            <!-- 4순위: 추가 안내 -->
+            <div class="result-info">
+                <p>높은 점수가 나왔어도 파킨슨병이 아닐 수 있습니다.</p>
+                <p>미리 검진을 통해 질병을 관리하는 것이 필요합니다.</p>
+                <a href="https://www.kmds.or.kr/hospital/">내 주변 파킨슨병 전문 병원 알아보기</a>
+            </div>
+
+            <!-- 5순위: 하단 버튼 -->
+            <div class="result-fixed-bottom">
+                <button id="exportButton" class="button bg_point border_point" style="display: none;">
+                    <span class="h2 bold">결과 저장하기</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- script -->
+    <script>
+
+        // 글자 크기 조절
+        function setFontSize(size) {
+            var container = document.querySelector('.accordion-container');
+            container.classList.remove('font-small', 'font-medium', 'font-large');
+            container.classList.add('font-' + size);
+            var btns = document.querySelectorAll('.font-size-btn');
+            btns.forEach(function(btn) { btn.classList.remove('active'); });
+            var sizeMap = { 'small': 0, 'medium': 1, 'large': 2 };
+            btns[sizeMap[size]].classList.add('active');
+        }
+
+        // 핸드폰 번호 자동 포맷팅 (010-1234-5678)
+        function formatPhone(input) {
+            var num = input.value.replace(/[^0-9]/g, '');
+            if (num.length > 11) num = num.slice(0, 11);
+            if (num.length <= 3) {
+                input.value = num;
+            } else if (num.length <= 7) {
+                input.value = num.slice(0, 3) + '-' + num.slice(3);
+            } else {
+                input.value = num.slice(0, 3) + '-' + num.slice(3, 7) + '-' + num.slice(7);
+            }
+        }
+        // 숫자만 추출 (DB 저장용)
+        function getPhoneNumber() {
+            return document.getElementById('hpnum').value.replace(/[^0-9]/g, '');
+        }
+
+        var start_year = "1900";// 시작할 년도
+        var today = new Date();
+        var today_year = today.getFullYear();
+        var index = 0;
+        for (var y = start_year; y <= today_year; y++) { //start_year ~ 현재 년도
+            document.getElementById('select_year').options[index] = new Option(y, y);
+            index++;
+        }
+        document.getElementById('select_year').value = "1970"; // 기본값 1970년
+
+        index = 0;
+        for (var m = 1; m <= 12; m++) {
+            document.getElementById('select_month').options[index] = new Option(m, m);
+            index++;
+        }
+
+        lastday();
+
+        function lastday() { //년과 월에 따라 마지막 일 구하기 
+            var Year = document.getElementById('select_year').value;
+            var Month = document.getElementById('select_month').value;
+            var day = new Date(new Date(Year, Month, 1) - 86400000).getDate();
+            /* = new Date(new Date(Year,Month,0)).getDate(); */
+
+            var dayindex_len = document.getElementById('select_day').length;
+            if (day > dayindex_len) {
+                for (var i = (dayindex_len + 1); i <= day; i++) {
+                    document.getElementById('select_day').options[i - 1] = new Option(i, i);
+                }
+            }
+            else if (day < dayindex_len) {
+                for (var i = dayindex_len; i >= day; i--) {
+                    document.getElementById('select_day').options[i] = null;
+                }
+            }
+        }
+
+    // let db;
+    let qnum = 0; // Start with the first question
+    let selectedChoices = []; // Initialize as an empty array
+    let currentSurveyId = null;
+    let globalSurveyId;
+    let savedConsentData = null; // 동의서 데이터 임시 저장
+
+    // const initializeDatabase = require('../db.js');
+    // const BASE_URL = 'https://jay-emerging-beetle.ngrok-free.app'; // Replace with your actual ngrok URL
+    // const BASE_URL = 'http://localhost:8001'; 
+    const BASE_URL = 'kppdcalclpdn.cafe24app.com'; 
+
+    // Initialize the database connection
+    async function initialize() {
+        try {
+            db = await initializeDatabase();
+            startSurveyAndGetFirstQuestion();
+        } catch (error) {
+            console.error('Failed to initialize database:', error);
+        }
+    }
+
+    function showExplain() {
+        document.querySelector('.page').style.display = 'none'; // Hide the initial welcome page
+        document.getElementById('explainPage').style.display = 'block'; // Show the explain page
+    }
+
+    function showAgreement() {
+        document.getElementById('explainPage').style.display = 'none';
+        document.getElementById('agreementPage').style.display = 'block';
+        window.scrollTo(0, 0);
+        // 첫 번째 섹션 자동 열기
+        setTimeout(function() {
+            var section1 = document.getElementById('section1');
+            if (section1 && !section1.classList.contains('open')) {
+                var content = section1.querySelector('.accordion-content');
+                var icon = section1.querySelector('.accordion-icon');
+                section1.classList.add('open');
+                icon.textContent = '-';
+                // scrollHeight가 0일 수 있으므로 고정 값 사용
+                content.style.maxHeight = '2000px';
+            }
+        }, 100);
+    }
+
+    function notParticipate() {
+        document.getElementById('agreementPage').style.display = 'none';''
+        document.getElementById('introPage').style.display = 'flex';
+        window.alert("미 동의 시 파킨슨병 진단 및 관리 서비스을(를) 받을 수 없습니다.");
+        // document.getElementById('disagreementPage').style.display = 'block';
+    }
+
+    function showIdentification() {
+        // 동의서 데이터 캡처
+        var privacyRadio = document.querySelector('input[name="privacyConsent"]:checked');
+        savedConsentData = {
+            privacyConsent: privacyRadio ? privacyRadio.value : 'none',
+            consent1: document.getElementById('consent1').checked,
+            consent2: document.getElementById('consent2').checked,
+            consent3: document.getElementById('consent3').checked,
+            consent4: document.getElementById('consent4').checked,
+            consent5: document.getElementById('consent5').checked,
+            consent6: document.getElementById('consent6').checked
+        };
+
+        document.getElementById('agreementPage').style.display = 'none';
+        document.getElementById('identificationPage').style.display = 'block';
+        window.scrollTo(0, 0);
+    }
+
+    function startQuestionnaire(event) {
+
+        var hpnum = getPhoneNumber();
+        if (hpnum == null || hpnum == "") {
+            alert("핸드폰번호는 필수입니다.");
+            return;
+        }
+        if (hpnum.length < 10 || hpnum.length > 11) {
+            alert("핸드폰번호를 정확히 입력해주세요.");
+            return;
+        }
+    
+        var year = document.getElementById('select_year').value;
+        var month = document.getElementById('select_month').value;
+        var day = document.getElementById('select_day').value;
+
+        var today = new Date();
+        var birthDate = new Date(year, month - 1, day); // month is 0-indexed in JavaScript Date
+
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDiff = today.getMonth() - birthDate.getMonth();
+        
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        console.log("Calculated age:", age);
+
+        document.getElementById('identificationPage').style.display = 'none';
+        document.getElementById('calculatorPage').style.display = 'block';
+
+
+        if (event) {
+            event.preventDefault();
+        }    
+        const url = `/start-Questionnaire/q/${qnum}`;
+        const method = 'POST';
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+        let body = {};
+    
+        if (qnum === 0) {
+            // For the first question, send the initial survey data
+            var udcheckbox = document.getElementsByName('underlyingConditions');
+            let checkedConditions = [];
+            for (var i = 0; i < udcheckbox.length; i++) {
+                if (udcheckbox[i].checked) {
+                    checkedConditions.push(udcheckbox[i].value);
+                }
+            }
+            const otherCondition = document.getElementById('udelse').value.trim();
+        
+            let underlyingConditions = [...checkedConditions];
+            if (otherCondition && otherCondition.toLowerCase() !== '없음') {
+                underlyingConditions.push(otherCondition);
+            }
+            
+            if (underlyingConditions.length === 0) {
+                underlyingConditions.push('없음');
+            }
+
+            body = {
+                name: document.getElementById('name').value,
+                age: age,
+                sex: document.getElementById('sex').value,
+                id: getPhoneNumber(),
+                underlyingConditions: underlyingConditions
+            };
+            qnum++;
+        } else {
+        // For subsequent questions, send the surveyId
+        body = { surveyId: globalSurveyId ,qnum :qnum };
+        }
+
+        fetch(url, {
+            method: method,
+            headers: headers,
+            body: JSON.stringify(body)
+        })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.surveyId) {
+            globalSurveyId = data.surveyId;
+            // 동의서 데이터 전송
+            if (savedConsentData) {
+                fetch('/submitConsent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        surveyId: globalSurveyId,
+                        ...savedConsentData
+                    })
+                })
+                .then(res => res.json())
+                .then(result => console.log('Consent saved:', result))
+                .catch(err => console.error('Error saving consent:', err));
+                savedConsentData = null;
+            }
+        }
+        if (data.question) {
+            displayQuestion(data);
+        } else {
+            finishSurvey();
+        }
+    })
+    .catch(error => {
+        console.error('There was a problem with your fetch operation:', error);
+    });
+    }
+
+
+
+    function displayQuestion(data) {
+        // console.log('Displaying question:', data);  // Log the incoming data
+
+        const questionElement = document.getElementById('question');
+        const choicesContainer = document.getElementById('choices');
+        const subtextElement = document.getElementById('subtext'); // Ensure this element exists in your HTML
+
+        // # Check if elements exist before manipulating them
+        if (!questionElement || !choicesContainer) {
+                console.error('Question or choices container not found');
+                return;
+        }
+        
+        questionElement.textContent = data.question;
+        choicesContainer.innerHTML = '';
+        subtextElement.textContent = data.subtext; // Set the subtext
+
+
+        if (data.qnum <= 22) {
+            Object.entries(data.choices).forEach(([choice, weight]) => {
+                const button = document.createElement('button');
+                button.textContent = choice;
+                button.className = 'selectable-button';
+                button.onclick = () => handleAnswer(data.qnum, choice, weight);
+                choicesContainer.appendChild(button);
+            });
+        } else if (data.qnum === 23) {
+            data.updrsQuestions.forEach(q => {
+                const button = document.createElement('button');
+                button.textContent = q.main_q_text;
+                button.className = 'selectable-button';
+                button.dataset.index = q.question_index;
+                button.dataset.weight = q.choice_yes_weight;
+                button.onclick = () => toggleUPDRSChoice(data.qnum, button);
+                choicesContainer.appendChild(button);
+            });
+        }
+        const buttonContainer = document.getElementById('button-container');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+
+        prevButton.style.display = data.qnum <= 1 ? 'none' : 'inline-block';
+        prevButton.disabled = data.qnum <= 1;
+
+        nextButton.textContent = data.isLastQuestion ? '다음 검사 진행' : '다음 >';
+        nextButton.onclick = nextPage; // Always use nextPage, it will handle the last question
+
+        if (buttonContainer) {
+            buttonContainer.style.display = 'flex';
+        } else {
+            console.warn('Button container not found');
+        }
+    }
+
+    function toggleUPDRSChoice(questionNumber, button) {
+        button.classList.toggle('selected');
+
+        const index = button.dataset.index;
+        const weight = parseFloat(button.dataset.weight);
+
+        const existingChoiceIndex = selectedChoices.findIndex(
+            choice => choice.questionNumber === questionNumber && choice.choice === index
+        );
+
+        if (button.classList.contains('selected')) {
+            if (existingChoiceIndex === -1) {
+                selectedChoices.push({ questionNumber, choice: index, weight });
+            } else {
+                selectedChoices[existingChoiceIndex].weight = weight;
+            }
+        } else {
+            if (existingChoiceIndex !== -1) {
+                selectedChoices.splice(existingChoiceIndex, 1);
+            }
+        }
+
+        // console.log(`UPDRS Question ${index}: ${button.classList.contains('selected') ? 'Selected' : 'Deselected'} with weight ${weight}`);
+    }
+
+    async function handleAnswer(questionNumber, choice, weight) {
+        const existingIndex = selectedChoices.findIndex(c => c.questionNumber === questionNumber);
+        if (existingIndex !== -1) {
+            selectedChoices[existingIndex] = { questionNumber, choice, weight };
+        } else {
+            selectedChoices.push({ questionNumber, choice, weight });
+        }
+        // console.log(`Question ${questionNumber}: User chose ${choice} with weight ${weight}`);
+
+        await nextPage();
+    }
+
+
+    async function nextPage() {
+        const currentAnswer = selectedChoices.find(choice => choice.questionNumber === qnum);
+    
+    // For question 23 (UPDRS), we need at least one selection or an explicit decision to proceed
+        if (qnum === 23) {
+            const updrsAnswers = selectedChoices.filter(choice => choice.questionNumber === 23);
+            if (updrsAnswers.length === 0) {
+                const proceed = confirm("선택된 증상이 없습니다. 계속 진행하시겠습니까?");
+                if (!proceed) {
+                    return;
+                }
+            }
+        } 
+    // For all other questions (1-22), we need exactly one answer
+        else if (!currentAnswer) {
+            alert("답변을 선택해 주세요.");
+            return;
+        }
+        
+        try {
+            const response = await fetch(`/nextPage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    surveyId: globalSurveyId, 
+                    qnum: qnum, 
+                    choices: selectedChoices 
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${errorData.error}. Details: ${errorData.details}`);
+            }
+
+            const data = await response.json();
+            
+            if (data.completed) {
+                await sendAnswersToServer();
+                // await fetchResults();
+                showftt();
+            } else {
+                qnum = data.qnum;
+                displayQuestion(data);
+            }
+        } catch (error) {
+            console.error('Error fetching next question:', error);
+            alert('An error occurred: ${error.message}. Please try again or contact support.');
+        }
+    }
+
+// function for ftt 
+let timerInterval;
+let restInterval;
+let startTime;
+let primaryHand = null;
+let testStarted = false; 
+
+
+    function showftt() {
+        document.getElementById('calculatorPage').style.display = 'none';
+        // 이미 가로 모드이면 회전 안내 건너뛰기
+        var isLandscape = window.matchMedia("(orientation: landscape)").matches ||
+                          (screen.orientation && screen.orientation.type.includes('landscape'));
+        if (isLandscape) {
+            proceedToIntroFTT();
+        } else {
+            document.getElementById('rotatePrompt').style.display = 'flex';
+        }
+    }
+
+    function checkOrientationAndProceed() {
+        // 화면 방향 확인 (가로 모드인지)
+        const isLandscape = window.matchMedia("(orientation: landscape)").matches ||
+                            (screen.orientation && screen.orientation.type.includes('landscape'));
+
+        if (isLandscape) {
+            // 가로 모드일 경우 바로 진행
+            proceedToIntroFTT();
+        } else {
+            // 세로 모드일 경우 안내 메시지
+            const proceed = confirm("아직 세로 모드입니다. 가로로 돌린 후 진행하시거나, 그래도 계속하시려면 '확인'을 눌러주세요.");
+            if (proceed) {
+                proceedToIntroFTT();
+            }
+        }
+    }
+
+    function proceedToIntroFTT() {
+        document.getElementById('rotatePrompt').style.display = 'none';
+        document.getElementById('introftt').style.display = 'block';
+    }
+
+
+function selectHand(hand) {
+        primaryHand = hand;
+        document.getElementById('right-hand').classList.remove('selected');
+        document.getElementById('left-hand').classList.remove('selected');
+        document.getElementById(hand + '-hand').classList.add('selected');
+            // Add visual feedback by changing button background color
+    document.getElementById('right-hand').style.backgroundColor = hand === 'right' ? '#4CAF50' : '';
+    document.getElementById('left-hand').style.backgroundColor = hand === 'left' ? '#4CAF50' : '';
+    
+    console.log('Primary hand selected:', primaryHand);
+    if (!primaryHand) {
+        alert('Please select your primary hand first (left or right)');
+        return;
+    }
+    }
+
+function endTest() {
+    testStarted = false;
+    clearInterval(timerInterval);
+    fetch('/submitMetadata', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+            surveyId: globalSurveyId,
+            primaryHand: primaryHand         
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("testftt").style.display = 'none';
+        document.getElementById("endftt").style.display = 'block';
+        setTimeout(function() {
+            var btn = document.getElementById("calculateButton");
+            btn.style.display = 'block';
+            btn.style.opacity = '0';
+            void btn.offsetWidth;
+            btn.classList.add('animatedBefore', 'fadeInUp', 'animated');
+        }, 1000);
+    })
+    .catch(error => console.error("Error submitting FTT metadata:", error));
+}
+    async function prevPage() {
+        if (qnum <= 1) return; // Can't go back from the first question
+
+        try {
+            const response = await fetch(`/prevPage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    surveyId: globalSurveyId, 
+                    qnum: qnum
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            
+            qnum = data.qnum;
+            displayQuestion(data);
+
+            selectedChoices = selectedChoices.filter(choice => choice.questionNumber < qnum);
+        } catch (error) {
+            console.error('Error fetching previous question:', error);
+            alert('An error occurred while fetching the previous question. Please try again.');
+        }
+    }
+
+        function step1() {
+            if (!primaryHand) {
+        alert("검사를 시작하기 전에 주손을 선택해주세요.");
+        return;
+            }
+        document.getElementById('introftt').style.display = 'none';
+        document.getElementById('step1').style.display = 'block';     
+        }
+
+        function step2() {
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';     
+        }
+
+        function step3() {
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';     
+        }
+
+        function step4_1() {
+        document.getElementById('step3').style.display = 'none';
+        document.getElementById('step4_1').style.display = 'block';     
+        }
+
+        function step4_2() {
+        document.getElementById('step4_1').style.display = 'none';
+        document.getElementById('step4_2').style.display = 'block';     
+        }
+
+        function startPracticeTest() {
+            document.getElementById('step4_2').style.display = 'none';
+            document.getElementById('practiceftt').style.display = 'block';
+            let timeLeft = 20;
+            document.getElementById("practice-timer").innerText = timeLeft;
+            let practiceInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById("practice-timer").innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(practiceInterval);
+                    startRest();
+            }
+        }, 1000);
+    }
+
+        function practiceTap(event) {
+            if (event.target.classList.contains('rectangle')) {
+                event.target.style.backgroundColor = "#e68a00";
+            }
+        }
+
+        function tapEnd() {
+            document.querySelectorAll('.rectangle').forEach(function(r) {
+                r.style.backgroundColor = "#4CAF50";
+            });
+        }
+
+        function startRest() {
+            document.getElementById('practiceftt').style.display = 'none';
+            document.getElementById('restftt').style.display = 'block';
+
+            // Hide the start test button initially
+            document.getElementById("start-test-btn").style.display = 'none';
+
+            let timeLeft = 30;
+            document.getElementById("rest-timer").innerText = timeLeft;
+            clearInterval(restInterval);
+            // Use setInterval with proper 1000ms interval for smooth countdown
+            restInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById("rest-timer").innerText = timeLeft;
+                
+                // When timer reaches zero
+                if (timeLeft <= 0) {
+                    clearInterval(restInterval);
+                    showTestButton();
+                }
+            }, 1000); // Exactly 1 second interval
+        }
+
+        function showTestButton() {
+            document.getElementById("start-test-btn").style.display = 'block';
+        }
+
+
+
+        function startTest() {
+            document.getElementById('restftt').style.display = 'none';
+            document.getElementById('testftt').style.display = 'block';
+
+            var testPage = document.getElementById('testftt');
+            var container = testPage.querySelector('.rectangle-container');
+            var rects = testPage.querySelectorAll('.rectangle');
+            var rect1 = rects[0];
+            var rect2 = rects[1];
+
+            container.style.display = 'flex';
+            container.style.position = 'relative';
+            container.style.height = '80vh';
+            container.style.width = '100%';
+
+            rect1.className = 'rectangle';
+            rect2.className = 'rectangle';
+            rect1.style.display = 'block';
+            rect2.style.display = 'block';
+
+            void rect1.offsetWidth;
+            void rect2.offsetWidth;
+
+            setTimeout(function() {
+                startTime = Date.now();
+                testStarted = true;
+                startTimer();
+            }, 300);
+        }
+
+        function getBoxCoordinatesFromCSS() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const mmToPx = Math.min(screenWidth, screenHeight) / 100;
+            const rectWidthPx = 30 * mmToPx;
+            const rectHeightPx = 45 * mmToPx;
+            const gapPx = 1.5 * mmToPx;
+            const centerX = screenWidth / 2;
+            const centerY = screenHeight / 2;
+            const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+
+            if (isLandscape) {
+                // 가로 모드: 좌우 배치
+                var box1 = {
+                    xMin: centerX - gapPx / 2 - rectWidthPx,
+                    xMax: centerX - gapPx / 2,
+                    yMin: centerY - rectHeightPx / 2,
+                    yMax: centerY + rectHeightPx / 2
+                };
+                var box2 = {
+                    xMin: centerX + gapPx / 2,
+                    xMax: centerX + gapPx / 2 + rectWidthPx,
+                    yMin: centerY - rectHeightPx / 2,
+                    yMax: centerY + rectHeightPx / 2
+                };
+            } else {
+                // 세로 모드: 상하 배치
+                var box1 = {
+                    xMin: centerX - rectWidthPx / 2,
+                    xMax: centerX + rectWidthPx / 2,
+                    yMin: centerY - gapPx / 2 - rectHeightPx,
+                    yMax: centerY - gapPx / 2
+                };
+                var box2 = {
+                    xMin: centerX - rectWidthPx / 2,
+                    xMax: centerX + rectWidthPx / 2,
+                    yMin: centerY + gapPx / 2,
+                    yMax: centerY + gapPx / 2 + rectHeightPx
+                };
+            }
+            return { box1, box2 };
+        }
+
+
+        function startTimer() {
+            let timeLeft = 20;
+            document.getElementById("timer").innerText = timeLeft;
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById("timer").innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    endTest();
+                }
+            }, 1000);
+        }
+
+        function recordTap(event) {
+            if (!testStarted) return;
+
+            let x, y;
+            if (event.type.startsWith('touch')) {
+                if (event.touches && event.touches.length > 0) {
+                    x = event.touches[0].clientX;
+                    y = event.touches[0].clientY;
+                }
+            } else {
+                x = event.clientX;
+                y = event.clientY;
+            }
+            
+            if (x === undefined || y === undefined) {
+                console.error("Could not determine tap coordinates");
+                return;
+            }
+            
+            var testPage = document.getElementById('testftt');
+            var testRects = testPage.querySelectorAll('.rectangle');
+            const rect1 = testRects[0];
+            const rect2 = testRects[1];
+
+            if (!rect1 || !rect2) {
+                console.error("Rectangle elements not found");
+                return;
+            }
+
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            const { box1, box2 } = getBoxCoordinatesFromCSS();
+        
+            // console.log("Box dimensions (CSS-based):", { box1, box2, tap: { x, y } });
+
+            
+            let boxType = "outside";
+            let validity = 0;
+            
+            // Check if tap is in rect1
+            if (x >= box1.xMin && x <= box1.xMax && y >= box1.yMin && y <= box1.yMax) {
+                boxType = "box1";
+                validity = 1;
+                rect1.style.backgroundColor = "#e68a00";
+            }
+            // Check if tap is in rect2
+            else if (x >= box2.xMin && x <= box2.xMax && y >= box2.yMin && y <= box2.yMax) {
+                boxType = "box2";
+                validity = 1;
+                rect2.style.backgroundColor = "#e68a00";
+            }
+
+            const time = Date.now() - startTime;
+            // console.log("Sending tap data:"
+            // , {
+            //     surveyId: globalSurveyId,
+            //     primaryHand,
+            //     x, y, boxType, time,
+            //     screenWidth, screenHeight
+            // });
+
+            fetch('/submitTap', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                surveyId: globalSurveyId, 
+                primaryHand, 
+                x, 
+                y, 
+                time, 
+                version: null, 
+                screenWidth, 
+                screenHeight,
+                boxType,
+                validity 
+                        })
+        })
+            .then(response => {
+                // console.log("Tap response status:", response.status);
+                return response.json();
+            })
+            .then(data => {
+                // console.log("Tap recorded:", data);
+                // If the tap is valid (inside a rectangle), provide visual feedback
+                if (data.validity === 1) {
+                    const element = document.getElementById(data.boxType === "box1" ? "rect1" : "rect2");
+                    if (element) {
+                        element.style.backgroundColor = "#388E3C";
+                        element.style.transform = "translateX(-50%) scale(1.05)";
+                        setTimeout(() => {
+                            element.style.backgroundColor = "#4CAF50";
+                            element.style.transform = "translateX(-50%) scale(1)";
+                        }, 250);
+                    }
+                }
+            })
+            .catch(error => console.error("Error submitting tap:", error));
+        }
+
+        function endTest() {
+
+            testStarted = false;
+            clearInterval(timerInterval);
+
+            fetch('/submitMetadata', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    surveyId: globalSurveyId, // Use global variable
+                    primaryHand: primaryHand         
+                })
+                    })
+        
+                .then(response => {
+                    console.log("Metadata submission response status:", response.status);
+                    return response.json();
+                    })
+
+                .then(data => {
+                    console.log("FTT metadata saved:", data);
+                    document.getElementById("testftt").style.display = 'none';
+                    document.getElementById("endftt").style.display = 'block';
+                    // 1초 후 애니메이션과 함께 버튼 표시 (손가락이 아직 화면에 있을 때 오탭 방지)
+                    setTimeout(function() {
+                        var btn = document.getElementById("calculateButton");
+                        btn.style.display = 'block';
+                        btn.style.opacity = '0';
+                        void btn.offsetWidth;
+                        btn.classList.add('animatedBefore', 'fadeInUp', 'animated');
+                    }, 1000);
+                })
+                .catch(error => console.error("Error submitting FTT metadata:", error));
+            }
+        
+            function calculate() {
+                // Hide the FFT end page
+                document.getElementById("endftt").style.display = 'none';
+                document.getElementById('resultsPage').style.display = 'block';
+
+                calculateAndSubmit();
+
+                document.getElementById('exportButton').onclick = function() {
+                    exportSurvey(globalSurveyId);
+                };
+
+                   }
+
+
+
+
+
+    async function sendAnswersToServer() {
+        try {
+            const response = await fetch(`/submitAnswers`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    surveyId: globalSurveyId, 
+                    answers: selectedChoices
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            console.log('Answers submitted successfully:', result);
+        } catch (error) {
+            console.error('Error submitting answers:', error);
+            alert('An error occurred while submitting your answers. Please try again.');
+        }
+    }
+
+    async function calculateAndSubmit() {
+        try {
+            // Fetch the results that include both survey and FFT data
+            const response = await fetch(`/resultsPage?surveyId=${globalSurveyId}&includeFTT=true`);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // Update the results page with the data
+            document.getElementById('totalLR').textContent = data.totalLR.toFixed(2);
+            document.getElementById('posteriorProbability').textContent = `${data.posteriorProbability}%`;
+            document.getElementById('resultMessage').textContent = data.resultMessage;
+
+            // Show the results page
+            document.getElementById('resultsPage').style.display = 'block';
+
+            // Show export button
+            const exportButton = document.getElementById('exportButton');
+            exportButton.style.display = 'block';
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        } catch (error) {
+            console.error('Error fetching results:', error);
+            alert('Failed to fetch results. Please try again.');
+        }
+    }
+
+
+
+    function exportSurvey(surveyId) {
+        console.log('Exporting survey with ID:', surveyId);
+        if (!surveyId) {
+            console.error('surveyId is undefined');
+            alert('Cannot export survey: Survey ID is missing');
+            return;
+        }
+        fetch(`/export-survey/${surveyId}`)
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    return response.json().then(err => { throw new Error(err.error + ': ' + err.details) });
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = `survey_${surveyId}_${Date.now()}.xlsx`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to export survey: ' + error.message);
+            });
+    }
+
+    // ========== 아코디언 동의서 관련 함수들 ==========
+
+    // 아코디언 토글 함수
+    function toggleAccordion(sectionId) {
+        const section = document.getElementById(sectionId);
+        const content = section.querySelector('.accordion-content');
+        const icon = section.querySelector('.accordion-icon');
+        const isOpen = section.classList.contains('open');
+
+        // 현재 섹션 토글
+        if (isOpen) {
+            section.classList.remove('open');
+            content.style.maxHeight = null;
+            icon.textContent = '+';
+        } else {
+            section.classList.add('open');
+            // 고정 값 사용 (scrollHeight가 0일 수 있음)
+            content.style.maxHeight = '2000px';
+            icon.textContent = '-';
+        }
+    }
+
+    // 스크롤 감지 함수 - 끝까지 스크롤하면 체크박스 활성화
+    function checkScroll(scrollId, checkboxId, hintId) {
+        const scrollElement = document.getElementById(scrollId);
+        const checkbox = document.getElementById(checkboxId);
+        const hint = document.getElementById(hintId);
+
+        if (!scrollElement || !checkbox) return;
+
+        const scrollTop = scrollElement.scrollTop;
+        const scrollHeight = scrollElement.scrollHeight;
+        const clientHeight = scrollElement.clientHeight;
+
+        // 스크롤이 끝에 도달했는지 확인 (10px 여유)
+        if (scrollTop + clientHeight >= scrollHeight - 10) {
+            checkbox.disabled = false;
+            if (hint) {
+                hint.style.display = 'none';
+            }
+        }
+    }
+
+    // 모든 필수 항목 완료 여부 확인
+    function checkAllConfirmed() {
+        // 1. 연구 설명문 확인 체크박스
+        const confirm1 = document.getElementById('confirm1');
+        const isSection1Complete = confirm1 && confirm1.checked;
+
+        // 2. 개인정보 제공 동의 (라디오 버튼 - 4개 중 하나 선택)
+        const privacyConsent = document.querySelector('input[name="privacyConsent"]:checked');
+        const isSection2Complete = privacyConsent !== null;
+        const privacyValue = privacyConsent ? privacyConsent.value : null;
+
+        // 3. 연구대상자 동의서 (체크박스 6개 모두 체크)
+        const consentCheckboxes = ['consent1', 'consent2', 'consent3', 'consent4', 'consent5', 'consent6'];
+        const isSection3Complete = consentCheckboxes.every(id => {
+            const checkbox = document.getElementById(id);
+            return checkbox && checkbox.checked;
+        });
+
+        // 요약 상태 업데이트
+        updateSummary('summary1', isSection1Complete, '완료', '미완료');
+
+        if (isSection2Complete) {
+            let privacyText = '';
+            switch(privacyValue) {
+                case 'all': privacyText = '모든 연구 동의'; break;
+                case 'hospital': privacyText = '병원 연구자만'; break;
+                case 'current': privacyText = '본 연구만'; break;
+                case 'none': privacyText = '동의하지 않음'; break;
+            }
+            updateSummary('summary2', true, privacyText, '미선택');
+        } else {
+            updateSummary('summary2', false, '', '미선택');
+        }
+
+        updateSummary('summary3', isSection3Complete, '완료 (' + consentCheckboxes.filter(id => document.getElementById(id).checked).length + '/6)', '미완료 (' + consentCheckboxes.filter(id => document.getElementById(id).checked).length + '/6)');
+
+        // 모든 필수 항목 완료 여부 확인
+        // 개인정보 동의하지 않음 선택 시에도 진행 가능 (단, 서비스 이용 불가 안내)
+        const allComplete = isSection1Complete && isSection2Complete && isSection3Complete;
+
+        // 동의 버튼 활성화/비활성화
+        const agreeBtn = document.getElementById('agreeBtn');
+        const incompleteNotice = document.getElementById('incompleteNotice');
+        const completeNotice = document.getElementById('completeNotice');
+
+        if (allComplete) {
+            agreeBtn.disabled = false;
+            agreeBtn.style.opacity = '1';
+            if (incompleteNotice) incompleteNotice.style.display = 'none';
+            if (completeNotice) completeNotice.style.display = 'block';
+        } else {
+            agreeBtn.disabled = true;
+            agreeBtn.style.opacity = '0.5';
+            if (incompleteNotice) incompleteNotice.style.display = 'block';
+            if (completeNotice) completeNotice.style.display = 'none';
+        }
+
+        // 섹션 4 아코디언 컨텐츠 높이 재계산
+        const section4 = document.getElementById('section4');
+        if (section4 && section4.classList.contains('open')) {
+            const content = section4.querySelector('.accordion-content');
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }
+    }
+
+    // 요약 상태 업데이트 함수
+    function updateSummary(elementId, isComplete, completeText, incompleteText) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+
+        if (isComplete) {
+            element.textContent = completeText;
+            element.className = 'status-complete';
+        } else {
+            element.textContent = incompleteText;
+            element.className = 'status-pending';
+        }
+    }
+
+    // 페이지 로드 시 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+        // 첫 번째 섹션 자동 열기
+        setTimeout(function() {
+            if (document.getElementById('section1')) {
+                toggleAccordion('section1');
+            }
+        }, 100);
+    });
+
+    </script>
+</body>
+</html>

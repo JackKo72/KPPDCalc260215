@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+/* GamtanRoadTantan */
+@font-face {
+    font-family: 'GamtanRoadTantan';
+    font-weight: 700;
+    src: url('../assets/font/GamtanRoadTantan.otf') format('opentype'),
+    url('../assets/font/GamtanRoadTantan.ttf') format('opentype');
+}
+
+.GamtanRoadTantan {
+    font-family: "GamtanRoadTantan", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", dotum, "돋움", helvetica, "Apple SD Gothic Neo", sans-serif;
+}

@@ -7,9 +7,14 @@ from scipy.stats import skew, kurtosis
 from statsmodels.tsa.stattools import acf
 from scipy.signal import detrend
 
+np.seterr(all='ignore')
+import warnings
+warnings.filterwarnings('ignore')
+
+
 import os
 from pathlib import Path
-DEBUG = os.getenv("FTT_DEBUG", "0") == "1"
+
 
 def teager_kaiser_energy(signal):
     """ Compute Teager-Kaiser Energy Operator (TKEO) """
@@ -124,24 +129,11 @@ def extract_features(tap_intervals, tap_positions=None):
         features["buttonNoneFreq"] = 0.0  # Not available in our data structure
         
         
-        if tap_positions and DEBUG:
-            # Debug information
-            print("DEBUG x_coords:", x_coords[:5], "length:", len(x_coords), file=sys.stderr)
-            print("DEBUG y_coords:", y_coords[:5], "length:", len(y_coords), file=sys.stderr)
-            print("DEBUG unique x values:", len(set(x_coords)), file=sys.stderr)
-            print("DEBUG unique y values:", len(set(y_coords)), file=sys.stderr)
-            
-            # Check for invalid values
-            x_has_nan = any(np.isnan(x) for x in x_coords)
-            y_has_nan = any(np.isnan(y) for y in y_coords)
-            print("DEBUG x has NaN:", x_has_nan, file=sys.stderr)
-            print("DEBUG y has NaN:", y_has_nan, file=sys.stderr)
-            
+        if tap_positions:
+                    
             # Compute variance
             x_var = np.var(x_coords)
             y_var = np.var(y_coords)
-            print("DEBUG x variance:", x_var, file=sys.stderr)
-            print("DEBUG y variance:", y_var, file=sys.stderr)
             
             # Try calculating correlation with safeguards
             try:
@@ -156,8 +148,6 @@ def extract_features(tap_intervals, tap_positions=None):
             except Exception as e:
                 print("DEBUG correlation calculation error:", str(e), file=sys.stderr)
                 features["corXY"] = 0.0
-
-        features["corXY"] = float(np.corrcoef(x_coords, y_coords)[0, 1]) if len(x_coords) > 1 else 0.0
     
 
     
@@ -250,8 +240,6 @@ if __name__ == "__main__":
     # Read input from stdin (used when called from Node.js)
     input_data = json.loads(sys.stdin.read())
     result = predict_ftt_abnormality(input_data)
-    sys.stdout.write(json.dumps(result))
-    sys.stdout.flush()
     
     # Output JSON result to stdout
     sys.stdout.write(json.dumps(result))

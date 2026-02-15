@@ -919,6 +919,6 @@ app.get('/export-survey/:surveyId', async (req, res) => {
     });
 
 
-app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`);
+app.listen(PORT, '127.0.0.1', () => {
+  console.log(`Server is running on ${PORT}`);
 });

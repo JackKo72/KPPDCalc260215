@@ -7,6 +7,9 @@ from scipy.stats import skew, kurtosis
 from statsmodels.tsa.stattools import acf
 from scipy.signal import detrend
 
+import os
+from pathlib import Path
+
 def teager_kaiser_energy(signal):
     """ Compute Teager-Kaiser Energy Operator (TKEO) """
     if len(signal) < 3:
@@ -169,8 +172,12 @@ def extract_features(tap_intervals, tap_positions=None):
     
     return features
 
-def predict_ftt_abnormality(data, model_path='/home/kdkhiah/ftt/xgb_ftt_model.pkl', 
-                          feature_names_path='/home/kdkhiah/ftt/feature_names.pkl'):
+def predict_ftt_abnormality(data, model_path= None, 
+                          feature_names_path=None):
+    base_dir = Path(__file__).resolve().parent  # kppdcalc_20260208/ 가정
+    model_path = Path(model_path) if model_path else (base_dir / "xgb_ftt_model.pkl")
+    feature_names_path = Path(feature_names_path) if feature_names_path else (base_dir / "feature_names.pkl")
+
     """
     Predict abnormality from FFT data
     

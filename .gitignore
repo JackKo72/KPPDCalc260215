@@ -1,0 +1,35 @@
+############################
+# Node.js
+############################
+node_modules/ npm-debug.log* yarn-debug.log* 
+yarn-error.log* package-lock.json pnpm-lock.yaml
+############################
+# Environment / Secrets
+############################
+.env .env.* config.json
+############################
+# Python
+############################
+__pycache__/ *.pyc *.pyo *.pyd venv/ .env/ 
+.python-version
+############################
+# ML Models (VERY IMPORTANT)
+############################
+*.pkl *.joblib *.model *.h5 *.pt *.pth *.onnx
+############################
+# Logs
+############################
+logs/ *.log
+############################
+# OS
+############################
+.DS_Store Thumbs.db
+############################
+# IDE
+############################
+.vscode/ .idea/
+############################
+# Build / Dist
+############################
+dist/
+build/

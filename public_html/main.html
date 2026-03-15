@@ -150,30 +150,19 @@
                         <span class="accordion-icon">+</span>
                     </div>
                     <div class="accordion-content">
-                        <div class="accordion-scroll" id="scroll2">
+                        <div class="accordion-scroll" id="scroll2" onscroll ="checkScroll('scroll2', 'comfirm2', 'scrollHint2')">
                             <div class="research-info h6">
                                 <p class="bold primary" style="margin-bottom: 12px;">개인 정보의 제공에 대한 동의사항</p>
                                 <p class="tight">귀하의 자료는 향후의 다른 연구에서도 사용하여 더 좋은 결과를 얻을 수 있습니다.</p>
-                                <p class="tight" style="margin-top: 12px;">귀하의 자료를 향후의 다른 연구에 사용하는 것과 관련하여 다음 중 하나를 선택해 주시기 바랍니다.</p>
+                                <p class="tight" style="margin-top: 12px;">귀하의 자료를 향후의 다른 연구에 사용하는 것과 관련하여, 본 연구의 연구자는 현행 법률과 규정이 허용하는 범위 내에서 귀하의 개인정보를 수집하고 처리합니다.</p>
                             </div>
                         </div>
-                        <div class="privacy-options">
-                            <label class="radio-label">
-                                <input type="radio" name="privacyConsent" value="all" onchange="checkAllConfirmed()">
-                                <span class="h6">향후의 모든 다른 연구에 귀하의 자료를 제공하여 연구하는 것에 동의한다</span>
+                        <div class="accordion-confirm">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="confirm2" onchange="checkAllConfirmed()">
+                                <span class="h6">위 개인정보 제공 동의사항을 모두 읽고 확인했습니다</span>
                             </label>
-                            <label class="radio-label">
-                                <input type="radio" name="privacyConsent" value="hospital" onchange="checkAllConfirmed()">
-                                <span class="h6">한림대학교성심병원의 연구자에게만 동의한다</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="privacyConsent" value="current" onchange="checkAllConfirmed()">
-                                <span class="h6">본 연구의 연구자에게만 동의한다</span>
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="privacyConsent" value="none" onchange="checkAllConfirmed()">
-                                <span class="h6">동의하지 않는다</span>
-                            </label>
+                            <p class="scroll-hint h7" id="scrollHint2">* 끝까지 스크롤하여 내용을 확인해 주세요</p>
                         </div>
                     </div>
                 </div>
@@ -185,41 +174,27 @@
                         <span class="accordion-icon">+</span>
                     </div>
                     <div class="accordion-content">
-                        <div class="accordion-scroll" id="scroll3">
+                        <div class="accordion-scroll" id="scroll3" onscroll="checkScroll('scroll3', 'confirm3', 'scrollHint3')">
                             <div class="research-info h6">
                                 <p class="bold primary" style="margin-bottom: 12px;">연구대상자 동의서</p>
-                                <p class="tight">아래 각 항목을 확인하고 동의하시면 체크해 주세요.</p>
+                                <p class="tight">본인은 임상연구에 대해 구두로 설명을 받고 상기 연구대상자 설명문을 읽었으며 담당 연구원과 이에 대하여 의논하였습니다.</p>
+                                <p class="tight" style="margin-top: 8px;">본인은 위험과 이득에 관하여 들었으며 나의 질문에 만족할 만한 답변을 얻었습니다.</p>
+                                <p class="tight" style="margin-top: 8px;">본인은 이 연구에 참여하는 것에 대하여 자발적으로 동의합니다.</p>
+                                <p class="tight" style="margin-top: 8px;">본인은 이후의 치료에 영향을 받지 않고 언제든지 연구의 참여를 거부하거나 연구의 참여를 중도에 철회할 수 있고 이러한 결정이 나에게 어떠한 해가 되지 않을 것이라는 것을 알고 있습니다.</p>
+                                <p class="tight" style="margin-top: 8px;">본인은 이 설명서 및 동의서에 서명함으로써 의학 연구 목적으로 나의 개인정보가 현행 법률과 규정이 허용하는 범위 내에서 연구자가 수집하고 처리하는데 동의합니다.</p>
+                                <p class="tight" style="margin-top: 8px;">본인은 이 동의서 사본을 받을 것을 알고 있습니다.</p>
+                            </div>
+                            <div class="research-info h7" style="padding: 12px 20px; background: #F9F9F9; border-top: 1px solid #d3d3d3;">
+                                <p class="tight opacity_60">* 본 연구를 위해 수집된 개인정보는 관련법령에 따라 연구종료 시점부터 3년간 의무적으로 보관되며, 코호트 연구의 특성상 7년까지 보관 후 폐기됩니다.</p>
+                                <p class="tight opacity_60">- 생명윤리 및 안전에 관한 법률 시행규칙 제15조 (인간대상연구의 기록 및 보관 등)</p>
                             </div>
                         </div>
-                        <div class="consent-checkboxes">
+                        <div class="accordion-confirm">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="consent1" onchange="checkAllConfirmed()">
-                                <span class="h6">본인은 임상연구에 대해 구두로 설명을 받고 상기 연구대상자 설명문을 읽었으며 담당 연구원과 이에 대하여 의논하였습니다.</span>
+                                <input type="checkbox" id="confirm3" onchange="checkAllConfirmed()" disabled>
+                                <span class="h6">위 연구대상자 동의서를 모두 읽고 확인했습니다</span>
                             </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="consent2" onchange="checkAllConfirmed()">
-                                <span class="h6">본인은 위험과 이득에 관하여 들었으며 나의 질문에 만족할 만한 답변을 얻었습니다.</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="consent3" onchange="checkAllConfirmed()">
-                                <span class="h6">본인은 이 연구에 참여하는 것에 대하여 자발적으로 동의합니다.</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="consent4" onchange="checkAllConfirmed()">
-                                <span class="h6">본인은 이후의 치료에 영향을 받지 않고 언제든지 연구의 참여를 거부하거나 연구의 참여를 중도에 철회할 수 있고 이러한 결정이 나에게 어떠한 해가 되지 않을 것이라는 것을 알고 있습니다.</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="consent5" onchange="checkAllConfirmed()">
-                                <span class="h6">본인은 이 설명서 및 동의서에 서명함으로써 의학 연구 목적으로 나의 개인정보가 현행 법률과 규정이 허용하는 범위 내에서 연구자가 수집하고 처리하는데 동의합니다.</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="consent6" onchange="checkAllConfirmed()">
-                                <span class="h6">본인은 이 동의서 사본을 받을 것을 알고 있습니다.</span>
-                            </label>
-                        </div>
-                        <div class="research-info h7" style="padding: 12px 20px; background: #F9F9F9; border-top: 1px solid #d3d3d3;">
-                            <p class="tight opacity_60">* 본 연구를 위해 수집된 개인정보는 관련법령에 따라 연구종료 시점부터 3년간 의무적으로 보관되며, 코호트 연구의 특성상 7년까지 보관 후 폐기됩니다.</p>
-                            <p class="tight opacity_60">- 생명윤리 및 안전에 관한 법률 시행규칙 제15조 (인간대상연구의 기록 및 보관 등)</p>
+                            <p class="scroll-hint h7" id="scrollHint3">* 끝까지 스크롤하여 내용을 확인해 주세요</p>
                         </div>
                     </div>
                 </div>
@@ -232,23 +207,8 @@
                     </div>
                     <div class="accordion-content">
                         <div class="final-consent">
-                            <div class="consent-summary h6">
-                                <p class="bold primary" style="margin-bottom: 12px;">동의 현황</p>
-                                <div class="summary-item">
-                                    <span>연구 설명문 확인:</span>
-                                    <span id="summary1" class="status-pending">미완료</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span>개인정보 제공 동의:</span>
-                                    <span id="summary2" class="status-pending">미선택</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span>연구대상자 동의:</span>
-                                    <span id="summary3" class="status-pending">미완료</span>
-                                </div>
-                            </div>
-                            <div class="final-notice h6">
-                                <p class="tight red" id="incompleteNotice">* 모든 필수 항목을 완료해 주세요</p>
+                            <div class="final-notice h6" style="padding: 16px 20px;">
+                                <p class="tight red" id="incompleteNotice">* 1~3번 항목을 모두 읽고 확인해 주세요</p>
                                 <p class="tight dark_green" id="completeNotice" style="display: none;">모든 항목이 완료되었습니다. 동의 버튼을 클릭하여 진행해 주세요.</p>
                             </div>
                         </div>
@@ -509,8 +469,9 @@
                 <h1 class="h1 bold">잠시 휴식하세요</h1>
                 <br/>
                 <p class="h4 primary">30초 후 실제 검사 시작 <br/>
-                <span class="red">모의검사를 진행한 손으로 실제 검사를 진행해주세요.</span></p>
+                <span class="red">모의검사를 진행한 손으로 실제 검사를 진행해주세요.</span> <br/>
                 <p class="h4 primary">색이 늦게 바뀌어도 터치가 인식되는 중입니다.</p>
+
                 <p class="timer rest-timer-centered" id="rest-timer">30</p>
             <button id="start-test-btn" style="display: none;" class="button bg_point border_point" onclick="startTest()">검사 시작</button>
             </div>
@@ -706,22 +667,11 @@
     }
 
     function showIdentification() {
-        // 동의서 데이터 캡처
-        var privacyRadio = document.querySelector('input[name="privacyConsent"]:checked');
-        savedConsentData = {
-            privacyConsent: privacyRadio ? privacyRadio.value : 'none',
-            consent1: document.getElementById('consent1').checked,
-            consent2: document.getElementById('consent2').checked,
-            consent3: document.getElementById('consent3').checked,
-            consent4: document.getElementById('consent4').checked,
-            consent5: document.getElementById('consent5').checked,
-            consent6: document.getElementById('consent6').checked
-        };
-
         document.getElementById('agreementPage').style.display = 'none';
         document.getElementById('identificationPage').style.display = 'block';
         window.scrollTo(0, 0);
     }
+
 
     function startQuestionnaire(event) {
 
@@ -811,22 +761,7 @@
     })
     .then(data => {
         if (data.surveyId) {
-            globalSurveyId = data.surveyId;
-            // 동의서 데이터 전송
-            if (savedConsentData) {
-                fetch('/submitConsent', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        surveyId: globalSurveyId,
-                        ...savedConsentData
-                    })
-                })
-                .then(res => res.json())
-                .then(result => console.log('Consent saved:', result))
-                .catch(err => console.error('Error saving consent:', err));
-                savedConsentData = null;
-            }
+            globalSurveyId = data.surveyId;            
         }
         if (data.question) {
             displayQuestion(data);
@@ -1553,42 +1488,18 @@ function endTest() {
 
     // 모든 필수 항목 완료 여부 확인
     function checkAllConfirmed() {
-        // 1. 연구 설명문 확인 체크박스
+        // 1. 연구 설명문 확인
         const confirm1 = document.getElementById('confirm1');
         const isSection1Complete = confirm1 && confirm1.checked;
 
-        // 2. 개인정보 제공 동의 (라디오 버튼 - 4개 중 하나 선택)
-        const privacyConsent = document.querySelector('input[name="privacyConsent"]:checked');
-        const isSection2Complete = privacyConsent !== null;
-        const privacyValue = privacyConsent ? privacyConsent.value : null;
+        // 2. 개인정보 제공 동의 확인
+        const confirm2 = document.getElementById('confirm2');
+        const isSection2Complete = confirm2 && confirm2.checked;
 
-        // 3. 연구대상자 동의서 (체크박스 6개 모두 체크)
-        const consentCheckboxes = ['consent1', 'consent2', 'consent3', 'consent4', 'consent5', 'consent6'];
-        const isSection3Complete = consentCheckboxes.every(id => {
-            const checkbox = document.getElementById(id);
-            return checkbox && checkbox.checked;
-        });
+        // 3. 연구대상자 동의서 확인
+        const confirm3 = document.getElementById('confirm3');
+        const isSection3Complete = confirm3 && confirm3.checked;
 
-        // 요약 상태 업데이트
-        updateSummary('summary1', isSection1Complete, '완료', '미완료');
-
-        if (isSection2Complete) {
-            let privacyText = '';
-            switch(privacyValue) {
-                case 'all': privacyText = '모든 연구 동의'; break;
-                case 'hospital': privacyText = '병원 연구자만'; break;
-                case 'current': privacyText = '본 연구만'; break;
-                case 'none': privacyText = '동의하지 않음'; break;
-            }
-            updateSummary('summary2', true, privacyText, '미선택');
-        } else {
-            updateSummary('summary2', false, '', '미선택');
-        }
-
-        updateSummary('summary3', isSection3Complete, '완료 (' + consentCheckboxes.filter(id => document.getElementById(id).checked).length + '/6)', '미완료 (' + consentCheckboxes.filter(id => document.getElementById(id).checked).length + '/6)');
-
-        // 모든 필수 항목 완료 여부 확인
-        // 개인정보 동의하지 않음 선택 시에도 진행 가능 (단, 서비스 이용 불가 안내)
         const allComplete = isSection1Complete && isSection2Complete && isSection3Complete;
 
         // 동의 버튼 활성화/비활성화
@@ -1606,27 +1517,6 @@ function endTest() {
             agreeBtn.style.opacity = '0.5';
             if (incompleteNotice) incompleteNotice.style.display = 'block';
             if (completeNotice) completeNotice.style.display = 'none';
-        }
-
-        // 섹션 4 아코디언 컨텐츠 높이 재계산
-        const section4 = document.getElementById('section4');
-        if (section4 && section4.classList.contains('open')) {
-            const content = section4.querySelector('.accordion-content');
-            content.style.maxHeight = content.scrollHeight + 'px';
-        }
-    }
-
-    // 요약 상태 업데이트 함수
-    function updateSummary(elementId, isComplete, completeText, incompleteText) {
-        const element = document.getElementById(elementId);
-        if (!element) return;
-
-        if (isComplete) {
-            element.textContent = completeText;
-            element.className = 'status-complete';
-        } else {
-            element.textContent = incompleteText;
-            element.className = 'status-pending';
         }
     }
 

@@ -33,6 +33,7 @@ async function predictFttAbnormality(data) {
     });
     
     // Handle process completion
+    // Handle process completion
     pythonProcess.on('close', (code) => {
       if (code !== 0) {
         console.error(`Python process exited with code ${code}`);
@@ -40,18 +41,33 @@ async function predictFttAbnormality(data) {
         reject(new Error(`Python process failed with code ${code}: ${errorData}`));
         return;
       }
-      
+
+      // ✅ ADDED: Log raw output temporarily to identify pollution source
+      console.log('=== Raw Python stdout ===\n', outputData);
+
       try {
-        // Parse the JSON output from Python
-        const result = JSON.parse(outputData);
-        
+        // ✅ ADDED: Split output into lines and find the JSON line
+        const jsonLine = outputData
+          .split('\n')                        // split "DEBUG...\n{...}\n" into array
+          .map(line => line.trim())           // remove whitespace from each line
+          .find(line => line.startsWith('{')); // grab the first line starting with '{'
+        //  e.g. from ['DEBUG X_coords = ...', '{"success":true,...}']
+        //  jsonLine = '{"success":true,...}'  ← clean, parseable
+
+        // ✅ ADDED: Explicit error if no JSON line found at all
+        if (!jsonLine) {
+          throw new Error(`No JSON found in output: ${outputData}`);
+        }
+
+        // ✅ CHANGED: parse jsonLine instead of raw outputData
+      // const result = JSON.parse(outputData);   ← REMOVED: crashes on polluted output
+        const result = JSON.parse(jsonLine);       // ← ADDED: only parses the clean JSON line
+
         if (result.success) {
-          // Calculate ftt_weight based on abnormal status
           const abnormal = result.abnormal;
           const probability = result.probability;
           const ftt_weight = abnormal === 1 ? 3.5 : 0.6;
           
-          // Return in the expected format for web.js
           resolve({
             success: true,
             abnormal,
@@ -60,15 +76,18 @@ async function predictFttAbnormality(data) {
             features_used: result.features_used
           });
         } else {
-          // Handle prediction errors
           reject(new Error(`Prediction failed: ${result.error}`));
         }
       } catch (parseError) {
-        console.error('Failed to parse Python output:', outputData);
-        reject(new Error(`Failed to parse Python output: ${parseError.message}`));
+        // ✅ CHANGED: now logs both raw output AND the error for better debugging
+      // console.error('Failed to parse Python output:', outputData);
+        console.error('Failed to parse Python output:');
+        console.error('  Raw stdout was:', JSON.stringify(outputData)); // shows hidden chars
+        console.error('  Parse error:', parseError.message);
+          reject(new Error(`Failed to parse Python output: ${parseError.message}`));
       }
     });
-    
+
     // Send input data to Python script via stdin
     pythonProcess.stdin.write(JSON.stringify(data));
     pythonProcess.stdin.end();
@@ -85,7 +104,6 @@ initializeDatabase().then(pool => {
 });
 
 
-const path = require('path');
 const moment = require('moment');
 const cors = require('cors');
 const app = express();

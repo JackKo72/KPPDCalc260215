@@ -876,9 +876,9 @@ app.get('/resultsPage', async (req, res) => {
         const q13 = specificAnswers.find(r => r.question_number === 13);
 
         let resultMessage;
-        if (q12?.answer == '네') {
+        if (q12?.choice == '네') {
             resultMessage = '파킨슨 특이 증세인 렘수면장애가 의심되어 정밀 검사를 권장합니다';
-        } else if (q13?.answer == '네') {
+        } else if (q13?.choice == '네') {
             resultMessage = '파킨슨 특이 증세인 냄새 인지 저하가 의심되어 정밀 검사를 권장합니다';
         } else if (fttResults?.abnormal == 1) {
             resultMessage = '파킨슨 특이 증세인 운동완만증이 의심되어 정밀 검사를 권장합니다';

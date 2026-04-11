@@ -870,6 +870,8 @@ app.get('/resultsPage', async (req, res) => {
             WHERE survey_id = ? AND version = ? AND question_number IN (12, 13)`,
             [surveyId, latestVersion]
         );
+        console.log('specificAnswers raw:', JSON.stringify(specificAnswers, null, 2));
+
         const q12 = specificAnswers.find(r => r.question_number === 12);
         const q13 = specificAnswers.find(r => r.question_number === 13);
 

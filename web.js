@@ -870,15 +870,14 @@ app.get('/resultsPage', async (req, res) => {
             WHERE survey_id = ? AND version = ? AND question_number IN (12, 13)`,
             [surveyId, latestVersion]
         );
-        console.log('specificAnswers raw:', JSON.stringify(specificAnswers, null, 2));
 
         const q12 = specificAnswers.find(r => r.question_number === 12);
         const q13 = specificAnswers.find(r => r.question_number === 13);
 
         let resultMessage;
-        if (q12?.answer == 1) {
+        if (q12?.answer == '네') {
             resultMessage = '파킨슨 특이 증세인 렘수면장애가 의심되어 정밀 검사를 권장합니다';
-        } else if (q13?.answer == 1) {
+        } else if (q13?.answer == '네') {
             resultMessage = '파킨슨 특이 증세인 냄새 인지 저하가 의심되어 정밀 검사를 권장합니다';
         } else if (fttResults?.abnormal == 1) {
             resultMessage = '파킨슨 특이 증세인 운동완만증이 의심되어 정밀 검사를 권장합니다';

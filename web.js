@@ -866,7 +866,7 @@ app.get('/resultsPage', async (req, res) => {
         const postProbPercentage = postProb * 100;
 
         const [specificAnswers] = await db.execute(
-            `SELECT question_number, answer FROM survey_answers 
+            `SELECT * FROM survey_answers 
             WHERE survey_id = ? AND version = ? AND question_number IN (12, 13)`,
             [surveyId, latestVersion]
         );

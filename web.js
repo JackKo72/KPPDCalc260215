@@ -864,7 +864,26 @@ app.get('/resultsPage', async (req, res) => {
         
         // Convert to percentage for display
         const postProbPercentage = postProb * 100;
-        const resultMessage = totalLR >= thresholdLR ? '정밀검사가 필요합니다' : '수치 상 안전할 가능성이 높습니다';
+
+        const [specificAnswers] = await db.execute(
+            `SELECT question_number, answer FROM survey_answers 
+            WHERE survey_id = ? AND version = ? AND question_number IN (12, 13)`,
+            [surveyId, latestVersion]
+        );
+        const q12 = specificAnswers.find(r => r.question_number === 12);
+        const q13 = specificAnswers.find(r => r.question_number === 13);
+
+        let resultMessage;
+        if (q12?.answer == 1) {
+            resultMessage = '파킨슨 특이 증세인 렘수면장애가 의심되어 정밀 검사를 권장합니다';
+        } else if (q13?.answer == 1) {
+            resultMessage = '파킨슨 특이 증세인 냄새 인지 저하가 의심되어 정밀 검사를 권장합니다';
+        } else if (fttResults?.abnormal == 1) {
+            resultMessage = '파킨슨 특이 증세인 운동완만증이 의심되어 정밀 검사를 권장합니다';
+        } else if (totalLR >= thresholdLR) {
+            resultMessage = '수치 상 파킨슨 발병 위험군으로 의심되어 정밀 검사를 권장합니다';
+        } else {
+            resultMessage = '수치 상 안전할 가능성이 높습니다';}
 
         res.json({ 
             totalLR, 
@@ -876,6 +895,7 @@ app.get('/resultsPage', async (req, res) => {
         console.error('Error calculating total LR:', error);
         res.status(500).json({ error: 'Failed to calculate total LR' });
     }
+    
 });
 
 

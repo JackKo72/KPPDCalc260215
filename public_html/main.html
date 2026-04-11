@@ -135,7 +135,7 @@
                         </div>
                         <div class="accordion-confirm">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="confirm1" onchange="checkAllConfirmed()" disabled>
+                                <input type="checkbox" id="confirm1" onchange="checkAllConfirmed()">
                                 <span class="h6">위 연구대상자 설명문을 모두 읽고 확인했습니다</span>
                             </label>
                             <p class="scroll-hint h7" id="scrollHint1">* 끝까지 스크롤하여 내용을 확인해 주세요</p>
@@ -191,7 +191,7 @@
                         </div>
                         <div class="accordion-confirm">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="confirm3" onchange="checkAllConfirmed()" disabled>
+                                <input type="checkbox" id="confirm3" onchange="checkAllConfirmed()">
                                 <span class="h6">위 연구대상자 동의서를 모두 읽고 확인했습니다</span>
                             </label>
                             <p class="scroll-hint h7" id="scrollHint3">* 끝까지 스크롤하여 내용을 확인해 주세요</p>
@@ -208,7 +208,10 @@
                     <div class="accordion-content">
                         <div class="final-consent">
                             <div class="final-notice h6" style="padding: 16px 20px;">
-                                <p class="tight red" id="incompleteNotice">* 1~3번 항목을 모두 읽고 확인해 주세요</p>
+                                <button class="button bg_point border_point flex_col" style="width:100%; margin-bottom:12px;" onclick="agreeAll()">
+                                    <span class="h5 bold">전체 동의</span>
+                                </button>
+
                                 <p class="tight dark_green" id="completeNotice" style="display: none;">모든 항목이 완료되었습니다. 동의 버튼을 클릭하여 진행해 주세요.</p>
                             </div>
                         </div>
@@ -507,7 +510,7 @@
             <div class="result-primary">
                 <p class="result-label">검사 결과</p>
                 <p id="resultMessage" class="result-main-message"></p>
-                <p class="result-threshold">80% 이상부터 정밀 검사가 필요합니다.</p>
+                <p class="result-threshold">파킨슨 특이 증세가 있거나 80% 이상부터 정밀 검사가 필요합니다.</p>
             </div>
 
             <div class="default_box">
@@ -534,7 +537,7 @@
             <div class="result-info">
                 <p>높은 점수가 나왔어도 파킨슨병이 아닐 수 있습니다.</p>
                 <p>미리 검진을 통해 질병을 관리하는 것이 필요합니다.</p>
-                <a href="https://www.kmds.or.kr/hospital/">내 주변 파킨슨병 전문 병원 알아보기</a>
+                <a href="https://www.youtube.com/watch?v=Rz0ByB5tkT4">증상이 더 궁금하시다면? 1분 10초부터</a>
             </div>
 
             <!-- 5순위: 하단 버튼 -->
@@ -624,7 +627,7 @@
     // const initializeDatabase = require('../db.js');
     // const BASE_URL = 'https://jay-emerging-beetle.ngrok-free.app'; // Replace with your actual ngrok URL
     // const BASE_URL = 'http://localhost:8001'; 
-    const BASE_URL = 'kppdcalclpdn.cafe24app.com'; 
+    const BASE_URL = 'kppdcalc.com'; 
 
     // Initialize the database connection
     async function initialize() {
@@ -1467,23 +1470,21 @@ function endTest() {
 
     // 스크롤 감지 함수 - 끝까지 스크롤하면 체크박스 활성화
     function checkScroll(scrollId, checkboxId, hintId) {
-        const scrollElement = document.getElementById(scrollId);
         const checkbox = document.getElementById(checkboxId);
         const hint = document.getElementById(hintId);
+        if (checkbox) checkbox.disabled = false;
+        if (hint) hint.style.display = 'none';
+    }       
 
-        if (!scrollElement || !checkbox) return;
-
-        const scrollTop = scrollElement.scrollTop;
-        const scrollHeight = scrollElement.scrollHeight;
-        const clientHeight = scrollElement.clientHeight;
-
-        // 스크롤이 끝에 도달했는지 확인 (10px 여유)
-        if (scrollTop + clientHeight >= scrollHeight - 10) {
-            checkbox.disabled = false;
-            if (hint) {
-                hint.style.display = 'none';
+    function agreeAll() {
+        ['confirm1', 'confirm2', 'confirm3'].forEach(id => {
+            const cb = document.getElementById(id);
+            if (cb) {
+                cb.disabled = false;
+                cb.checked = true;
             }
-        }
+        });
+        checkAllConfirmed();
     }
 
     // 모든 필수 항목 완료 여부 확인

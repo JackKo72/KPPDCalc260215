@@ -192,25 +192,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- 섹션 4: 최종 동의 확인 -->
-                <div class="accordion-section" id="section4">
-                    <div class="accordion-header" onclick="toggleAccordion('section4')">
-                        <span class="accordion-title h5 bold">4. 모두 동의하기</span>
-                        <span class="accordion-icon">+</span>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="final-consent">
-                            <div class="final-notice h6" style="padding: 16px 20px;">
-                                <button class="button bg_point border_point flex_col" style="width:100%; margin-bottom:12px;" onclick="agreeAll()">
-                                    <span class="h5 bold">전체 동의</span>
-                                </button>
-
-                                <p class="tight dark_green" id="completeNotice" style="display: none;">모든 항목이 완료되었습니다. 동의 버튼을 클릭하여 진행해 주세요.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div style="margin-top: 12px;">
+                <button class="button bg_point border_point flex_col" style="width:100%;" onclick="agreeAll()">
+                    <span class="h5 bold">모두 동의하기</span>
+                </button>
+                <p class="tight dark_green" id="completeNotice" style="display: none; text-align: center; margin-top: 8px;">모든 항목이 완료되었습니다. 동의 버튼을 클릭하여 진행해 주세요.</p>
             </div>
 
             <div class="flex_row button_row" style="margin-top: 24px;">
@@ -223,6 +211,7 @@
             </div>
         </div>
     </div>
+    
 
     <!-- 4 identificationPage -->
     <div id="identificationPage" style="display: none;" class="">
